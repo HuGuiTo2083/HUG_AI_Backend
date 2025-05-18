@@ -1,7 +1,10 @@
 import os
 from flask import Flask, request, jsonify, render_template
+from dotenv import load_dotenv
+
 from openai import OpenAI
 from flask_cors import CORS
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -9,6 +12,7 @@ CORS(app)
 client = OpenAI(
     api_key=os.getenv("OPEN_ROUTER_TOKEN"), 
     base_url="https://openrouter.ai/api/v1")
+
 
 @app.route('/')
 def index():
